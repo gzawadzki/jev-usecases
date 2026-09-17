@@ -3,9 +3,10 @@
 !.env.example
 __pycache__/
 *.pyc
-data/classified.jsonl
+**/classified.jsonl
 .agents/
 .claude/
 .grok/
 .venv/
 venv/
+skills-lock.json

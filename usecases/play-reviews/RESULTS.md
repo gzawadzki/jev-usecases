@@ -1,6 +1,6 @@
 # Results
 
-Numbers below come from `data/classified.json` after the measured Jev run.
+Numbers below come from `data/classified.json` after the measured Jev run. Regenerate with `python usecases/play-reviews/summarize.py --write` from the repository root.
 
 ## Run
 

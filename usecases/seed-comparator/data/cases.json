@@ -1,0 +1,107 @@
+[
+  {
+    "id": "exact-voivodeships",
+    "note": "Identyczny zbiór co zatwierdzone GT ve-001",
+    "ground_truth": [
+      "Województwo śląskie",
+      "Województwo małopolskie",
+      "Województwo podkarpackie"
+    ],
+    "answer_raw": "[\"Województwo śląskie\", \"Województwo małopolskie\", \"Województwo podkarpackie\"]",
+    "answer_fragments": [
+      "Województwo śląskie",
+      "Województwo małopolskie",
+      "Województwo podkarpackie"
+    ],
+    "negative": false
+  },
+  {
+    "id": "semantic-short-names",
+    "note": "Te same województwa, krótszy zapis — Levenshtein powie extra+brak, Jev może uznać ten sam zbiór albo nadmiar/brak",
+    "ground_truth": [
+      "Województwo śląskie",
+      "Województwo małopolskie",
+      "Województwo podkarpackie"
+    ],
+    "answer_raw": "[\"śląskie\", \"małopolskie\", \"podkarpackie\"]",
+    "answer_fragments": ["śląskie", "małopolskie", "podkarpackie"],
+    "negative": false
+  },
+  {
+    "id": "typo-one-word",
+    "note": "Jedna literówka w śląskie",
+    "ground_truth": [
+      "Województwo śląskie",
+      "Województwo małopolskie",
+      "Województwo podkarpackie"
+    ],
+    "answer_raw": "[\"Województwo slaskie\", \"Województwo małopolskie\", \"Województwo podkarpackie\"]",
+    "answer_fragments": [
+      "Województwo slaskie",
+      "Województwo małopolskie",
+      "Województwo podkarpackie"
+    ],
+    "negative": false
+  },
+  {
+    "id": "extra-heading",
+    "note": "Model dopisał nagłówek układu — typowy błąd hipotezy seeda",
+    "ground_truth": [
+      "Województwo śląskie",
+      "Województwo małopolskie",
+      "Województwo podkarpackie"
+    ],
+    "answer_raw": "[\"Polska\", \"Województwo śląskie\", \"Województwo małopolskie\", \"Województwo podkarpackie\"]",
+    "answer_fragments": [
+      "Polska",
+      "Województwo śląskie",
+      "Województwo małopolskie",
+      "Województwo podkarpackie"
+    ],
+    "negative": false
+  },
+  {
+    "id": "ve-001-draft-empty",
+    "note": "Szkic modelu na ve-001: pusta lista vs trzy województwa",
+    "ground_truth": [
+      "Województwo śląskie",
+      "Województwo małopolskie",
+      "Województwo podkarpackie"
+    ],
+    "answer_raw": "```json\n[]\n```",
+    "answer_fragments": [],
+    "negative": false
+  },
+  {
+    "id": "ve-002-bad-format",
+    "note": "Szkic ve-002: lista obiektów zamiast stringów",
+    "ground_truth": ["Yes, I trust this folder"],
+    "answer_raw": "```json\n[\n  {\"text\": \"1\"}\n]\n```",
+    "answer_fragments": null,
+    "negative": false
+  },
+  {
+    "id": "ve-003-wrong-span",
+    "note": "Szkic ve-003: 'codex' zamiast tekstu limitu sesji",
+    "ground_truth": ["You've hit your session limit · resets 1:50am (Europe/Warsaw)"],
+    "answer_raw": "```json\n[\n  \"codex\"\n]\n```",
+    "answer_fragments": ["codex"],
+    "negative": false
+  },
+  {
+    "id": "negative-empty-ok",
+    "note": "Przykład negatywny: pusta lista jest poprawna",
+    "ground_truth": [],
+    "answer_raw": "[]",
+    "answer_fragments": [],
+    "negative": true
+  },
+  {
+    "id": "negative-guessed",
+    "note": "Przykład negatywny, model zgadł 'ważny' tytuł",
+    "ground_truth": [],
+    "answer_raw": "[\"Regulamin\"]",
+    "answer_fragments": ["Regulamin"],
+    "negative": true
+  }
+]

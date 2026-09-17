@@ -8,11 +8,15 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 import sys
 from pathlib import Path
 
 from typesafe_sdk import Noul, NoulCriteria, Score, TypeSafeClient
+
+_REPO = Path(__file__).resolve().parents[2]
+if str(_REPO) not in sys.path:
+    sys.path.insert(0, str(_REPO))
+from env import load_api_key
 
 MODEL = "jev-latest"
 
@@ -152,18 +156,6 @@ QUESTIONS = {
         ],
     ),
 }
-
-
-def load_api_key() -> str:
-    key = os.environ.get("TYPESAFE_API_KEY")
-    if key:
-        return key
-    env_path = Path(__file__).with_name(".env")
-    if env_path.exists():
-        for line in env_path.read_text(encoding="utf-8").splitlines():
-            if line.startswith("TYPESAFE_API_KEY="):
-                return line.split("=", 1)[1].strip().strip('"')
-    raise SystemExit("Set TYPESAFE_API_KEY or put it in .env")
 
 
 def screen(text: str) -> dict:
