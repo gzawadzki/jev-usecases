@@ -42,7 +42,7 @@ python usecases/czajka-guard/guard.py --demo
 python usecases/czajka-guard/guard.py "Ale zagrałeś tragicznie w tym meczu, usuń konto."
 ```
 
-**Agent router** (capability cards → one specialist or none):
+**Agent router** (one Choice + Nouls over capability cards → one specialist or none):
 
 ```bash
 python usecases/agent-router/router.py --demo

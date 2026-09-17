@@ -29,48 +29,76 @@ FITS = 0.35
 CLARIFY_GAP = 0.12
 
 
-def _card_blurb(card: dict) -> dict:
+def _choice_option(card: dict) -> dict:
     return {
         "what": "; ".join(card["does"]),
         "not_for": "; ".join(card["does_not"]),
-        "examples": card["examples"],
         "loads": card["loads"],
+        "examples": card["examples"],
     }
 
 
 def questions(cards: list[dict]) -> dict:
-    criteria = {c["id"]: _card_blurb(c) for c in cards}
-    criteria["none"] = {
+    """One Choice + 1+N Nouls. All run in parallel on the same utterance."""
+    which_criteria = {c["id"]: _choice_option(c) for c in cards}
+    which_criteria["none"] = {
         "what": "Small talk, wiedza ogólna, albo prośba spoza systemów banku",
         "not_for": "Cokolwiek, co wymaga salda, wniosku, płatności, logowania albo mapy ekranów",
-        "examples": ["jaka pogoda", "opowiedz żart"],
+        "examples": ["jaka pogoda w Gdańsku", "opowiedz żart o banku"],
     }
     q: dict = {
         "which": Choice(
             instructions={
-                "question": "Który agent powinien obsłużyć `utterance`?",
+                "question": "Który jeden agent powinien dostać `utterance` i swój kontekst?",
                 "inspect": "`utterance`",
-                "focus": "Intencja, nie wspólne słowa. 'Gdzie jest X' to nawigacja, nie treść X.",
+                "focus": (
+                    "Intencja, nie wspólne słowa. "
+                    "'Gdzie jest X w aplikacji' to navigation, nie treść X. "
+                    "'Pokaż / status / zrób X' to agent od X."
+                ),
             },
-            criteria=criteria,
+            criteria=which_criteria,
         ),
         "needs_specialist": Noul(
-            instructions="Czy `utterance` wymaga narzędzi albo danych bankowych, a nie samej rozmowy?",
+            instructions={
+                "question": "Czy `utterance` wymaga narzędzi albo danych bankowych?",
+                "inspect": "`utterance`",
+                "focus": "Czy trzeba załadować specjalistę, czy wystarczy rozmowa.",
+            },
             criteria=NoulCriteria(
-                true="Saldo, przelew, wniosek, logowanie, ścieżka w aplikacji",
-                false="Pogoda, żart, ogólna ciekawostka, czysta rozmowa",
+                true={
+                    "what": "Saldo, historia, przelew, BLIK, wniosek, zdolność, logowanie, PIN, ścieżka w menu",
+                    "examples": [
+                        "pokaż transakcje",
+                        "gdzie są wnioski",
+                        "zrób przelew",
+                    ],
+                },
+                false={
+                    "what": "Pogoda, żart, ciekawostka, czysta rozmowa bez systemów banku",
+                    "examples": ["jaka pogoda", "opowiedz żart"],
+                },
             ),
         ),
     }
     for card in cards:
         q[f"fits::{card['id']}"] = Noul(
             instructions={
-                "question": f"Czy agent `{card['id']}` robi dokładnie to, o co prosi `utterance`?",
-                "focus": "Czytaj does / does_not na karcie, nie sam tytuł.",
+                "question": (
+                    f"Czy agent `{card['id']}` ({card['title']}) robi to, o co prosi `utterance`?"
+                ),
+                "inspect": "`utterance`",
+                "focus": "Tylko ta karta. Sąsiednie agenty oceniane są osobnymi pytaniami.",
             },
             criteria=NoulCriteria(
-                true=_card_blurb(card)["what"],
-                false=_card_blurb(card)["not_for"],
+                true={
+                    "what": "; ".join(card["does"]),
+                    "examples": card["examples"],
+                },
+                false={
+                    "what": "; ".join(card["does_not"]),
+                    "not_for": f"To nie jest zadanie dla `{card['id']}`, nawet jeśli padają te same słowa",
+                },
             ),
         )
     return q

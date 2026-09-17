@@ -1,5 +1,8 @@
 # Agent router results
 
+Questions (one request): `which` (Choice), `needs_specialist` (Noul), `fits::<id>` (Noul × 5). See the [README](README.md#questions-in-one-jev-call).
+
+
 Model `jev-1.13.0`. Ten utterances in `data/queries.json`. **10/10** matched `expected`.
 
 | utterance | expected | got | needs | top `fits` |
