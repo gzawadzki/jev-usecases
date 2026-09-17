@@ -1,12 +1,13 @@
 # Typed decisions on Polish text with TypeSafe Jev
 
-Four demos of [TypeSafe](https://docs.typesafe.ai/) **Jev**: a model that returns probabilities, not prose. Your code owns routing, thresholds, and side effects.
+Five demos of [TypeSafe](https://docs.typesafe.ai/) **Jev**: a model that returns probabilities, not prose. Your code owns routing, thresholds, and side effects.
 
 | Use case | What Jev decides | Measured |
 | --- | --- | --- |
 | [Play review inbox](usecases/play-reviews/) | Topic, bug, churn, feature request → product queue | **2975** reviews in **301.63 s** (8 workers) |
 | [Czajka guard](usecases/czajka-guard/) | Hate, vulgar, sex, crime, self-harm → pass / review / block / support | 7 Polish samples, one request each |
 | [Agent router](usecases/agent-router/) | Which specialist card to load (or none) | 10 bank-chat utterances |
+| [Essay scoring](usecases/essay-scoring/) | AES 2 rubric traits → 1–6 plus teacher inbox | 8 original essays, exact 5/8, within-1 8/8 |
 | [Seed comparator](usecases/seed-comparator/) | Error type of a model answer vs ground truth | 9 cases |
 
 Jev is a hosted System One model: you write the questions. It is not a chatbot and it does not generate replies.
@@ -49,6 +50,12 @@ python usecases/agent-router/router.py --demo
 python usecases/agent-router/router.py "gdzie są wnioski kredytowe?"
 ```
 
+**Essay scoring** (AES 2 rubric, not a Kaggle submit):
+
+```bash
+python usecases/essay-scoring/score.py
+```
+
 **Seed comparator**:
 
 ```bash
@@ -61,6 +68,7 @@ python usecases/seed-comparator/compare.py
 - Inbox policy (`churn ≥ 0.70` → `churn_watch`, and so on)
 - Guard routing (`self_harm` → support, not a silent block)
 - Loading at most one agent context after the router
+- AES integer caps (off-prompt, no thesis)
 - Exact-string compare in seedlab (this demo only replaces the *semantic* axis)
 
 ## Data and license

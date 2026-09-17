@@ -1,0 +1,50 @@
+[
+  {
+    "id": "score6-driverless",
+    "prompt": "Should driverless cars be legalized?",
+    "expected_score": 6,
+    "text": "Driverless cars should be legalized, but only under a licensing regime that treats the software vendor as the driver. The usual fear is a robot that cannot handle a wet intersection. The better fear is an uninsured stack of neural nets with no one to sue. Cities that already run automated metros show that machines can move people when the operator remains legally on the hook. Vendors would then compete on safety records instead of marketing slogans. Opponents argue that edge cases will always remain. That is true of human drivers too, and we still issue licenses. The difference is that a fleet can be recalled overnight; a million tired commuters cannot. Legalization without liability would be reckless. Legalization with vendor liability is how aviation already works, and it is how the roads should work next."
+  },
+  {
+    "id": "score5-phones",
+    "prompt": "Should phones be banned in classrooms?",
+    "expected_score": 5,
+    "text": "Phones should be banned during lessons, not during the whole school day. When a notification lights up, attention splits, and the student who was following a proof is suddenly in a group chat. Teachers already ask for silence; a phone ban just makes that request enforceable. Critics say phones are needed for research. That is a scheduling problem: research blocks can allow devices, while explanation blocks cannot. A total ban is too blunt, and an honor system is too weak. A timed lockbox during class is a boring policy, which is usually a sign it will work."
+  },
+  {
+    "id": "score4-uniforms",
+    "prompt": "Should students wear uniforms?",
+    "expected_score": 4,
+    "text": "I think uniforms are mostly a good idea because they stop people judging clothes. In my school some kids have expensive shoes and others do not, and you can see it in who sits where. Uniforms would not fix friendship groups but they would remove one obvious ranking. On the other hand uniforms are ugly and students like to show personality. Maybe a simple dress code is enough. Also uniforms cost money at the start even if they save money later. Overall I agree with uniforms more than I disagree."
+  },
+  {
+    "id": "score3-thin-evidence",
+    "prompt": "Should homework be abolished?",
+    "expected_score": 3,
+    "text": "Homework should be abolished because students are tired. School is already long and then you have to do more work at home which is not fair. Some people say homework helps you remember but I don't think it does because I forget it anyway. Teachers should just teach better in class. My cousin doesn't get homework and he is fine. So homework is bad and schools should stop it."
+  },
+  {
+    "id": "score2-off-and-errors",
+    "prompt": "Should driverless cars be legalized?",
+    "expected_score": 2,
+    "text": "Cars are cool I like fast cars. Driverless is like a game. If the car drive itself then you can sleep which is good because sleep is important for school. But also it might crash and crashing is bad. I saw a video. So maybe yes maybe no. Also buses exist. The government should do something about it I guess."
+  },
+  {
+    "id": "score1-no-claim",
+    "prompt": "Should phones be banned in classrooms?",
+    "expected_score": 1,
+    "text": "idk phones are phones. class is class. sometimes people use them. the question is hard. whatever."
+  },
+  {
+    "id": "off-prompt",
+    "prompt": "Should driverless cars be legalized?",
+    "expected_score": 1,
+    "text": "Summer vacation is the best time of year because you can go to the lake and not think about school. My family barbecues on Saturdays. I like swimming more than running. In conclusion vacation is important for happiness."
+  },
+  {
+    "id": "errors-obscure",
+    "prompt": "Should students wear uniforms?",
+    "expected_score": 2,
+    "text": "Uniform it good because no bully of shirt. If all wear same then nobody is rich look. But uniform it cost and ugly color make sad. Teacher say focus but I think focus is from sleep not from pant. So I vote half yes half the other thing."
+  }
+]
