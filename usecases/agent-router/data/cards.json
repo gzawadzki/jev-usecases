@@ -1,0 +1,87 @@
+[
+  {
+    "id": "transactions",
+    "title": "Agent transakcyjny",
+    "loads": "saldo, historia operacji, filtry daty i kwoty",
+    "does": [
+      "pokazać saldo i ostatnie operacje klienta",
+      "wyszukać przelew po dacie, kwocie albo tytule"
+    ],
+    "does_not": [
+      "tłumaczyć, w której zakładce aplikacji to leży",
+      "składać ani czytać wniosków kredytowych",
+      "wykonywać nowego przelewu albo BLIK"
+    ],
+    "examples": [
+      "pokaż ostatnie transakcje klienta",
+      "co poszło z konta wczoraj"
+    ]
+  },
+  {
+    "id": "payments",
+    "title": "Agent płatności",
+    "loads": "przelewy, BLIK, limity, odbiorcy zaufani",
+    "does": [
+      "zainicjować przelew, BLIK, doładowanie",
+      "zmienić limit płatności"
+    ],
+    "does_not": [
+      "tylko przeglądać historię (to transactions)",
+      "nawigować po menu"
+    ],
+    "examples": [
+      "zrób przelew 200 zł do Anny",
+      "zapłać BLIKIEM"
+    ]
+  },
+  {
+    "id": "navigation",
+    "title": "Agent nawigacyjny",
+    "loads": "mapa ekranów aplikacji i intranetu",
+    "does": [
+      "powiedzieć gdzie kliknąć, która zakładka, jaka ścieżka",
+      "znaleźć ekran po nazwie funkcji"
+    ],
+    "does_not": [
+      "odczytać dane klienta ani treść wniosku",
+      "wykonać przelewu"
+    ],
+    "examples": [
+      "gdzie są wnioski kredytowe?",
+      "jak wejść w historię karty"
+    ]
+  },
+  {
+    "id": "lending",
+    "title": "Agent kredytowy",
+    "loads": "wnioski, decyzje, zdolność, dokumenty",
+    "does": [
+      "status wniosku kredytowego",
+      "czy klient może dostać kredyt, jakie dokumenty"
+    ],
+    "does_not": [
+      "gdzie w menu jest przycisk wniosku (to navigation)",
+      "saldo i historia konta"
+    ],
+    "examples": [
+      "jaki jest status wniosku kredytowego Kowalskiego",
+      "czy dostanę kredyt gotówkowy"
+    ]
+  },
+  {
+    "id": "identity",
+    "title": "Agent tożsamości",
+    "loads": "logowanie, PIN, 2FA, aktywacja urządzenia",
+    "does": [
+      "odblokować dostęp, PIN, logowanie, nowe urządzenie"
+    ],
+    "does_not": [
+      "płatności i historia",
+      "ścieżka w menu, jeśli dostęp działa"
+    ],
+    "examples": [
+      "nie mogę się zalogować",
+      "PIN do karty zablokowany"
+    ]
+  }
+]

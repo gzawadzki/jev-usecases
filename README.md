@@ -1,14 +1,15 @@
 # Typed decisions on Polish text with TypeSafe Jev
 
-Three demos of [TypeSafe](https://docs.typesafe.ai/) **Jev**: a model that returns probabilities, not prose. Your code owns routing, thresholds, and side effects.
+Four demos of [TypeSafe](https://docs.typesafe.ai/) **Jev**: a model that returns probabilities, not prose. Your code owns routing, thresholds, and side effects.
 
 | Use case | What Jev decides | Measured |
 | --- | --- | --- |
 | [Play review inbox](usecases/play-reviews/) | Topic, bug, churn, feature request → product queue | **2975** reviews in **301.63 s** (8 workers) |
-| [Sójka-shaped guard](usecases/sojka-guard/) | Hate, vulgar, sex, crime, self-harm → pass / review / block / support | 7 Polish samples, one request each |
-| [Seed comparator](usecases/seed-comparator/) | Error type of a model answer vs ground truth (Bielik seed `visual-emphasis`) | 9 cases |
+| [Czajka guard](usecases/czajka-guard/) | Hate, vulgar, sex, crime, self-harm → pass / review / block / support | 7 Polish samples, one request each |
+| [Agent router](usecases/agent-router/) | Which specialist card to load (or none) | 10 bank-chat utterances |
+| [Seed comparator](usecases/seed-comparator/) | Error type of a model answer vs ground truth | 9 cases |
 
-Jev is not [Bielik Guard (Sójka)](https://guard.bielik.ai/). Sójka is a local Polish RoBERTa with five fixed labels. Jev is a hosted System One model: you write the questions.
+Jev is a hosted System One model: you write the questions. It is not a chatbot and it does not generate replies.
 
 ## Setup
 
@@ -34,11 +35,18 @@ python usecases/play-reviews/classify.py --workers 8
 python usecases/play-reviews/summarize.py --write
 ```
 
-**Safety screen** (Sójka taxonomy, Jev under the hood):
+**Czajka** (safety screen):
 
 ```bash
-python usecases/sojka-guard/guard.py --demo
-python usecases/sojka-guard/guard.py "Ale zagrałeś tragicznie w tym meczu, usuń konto."
+python usecases/czajka-guard/guard.py --demo
+python usecases/czajka-guard/guard.py "Ale zagrałeś tragicznie w tym meczu, usuń konto."
+```
+
+**Agent router** (capability cards → one specialist or none):
+
+```bash
+python usecases/agent-router/router.py --demo
+python usecases/agent-router/router.py "gdzie są wnioski kredytowe?"
 ```
 
 **Seed comparator**:
@@ -52,6 +60,7 @@ python usecases/seed-comparator/compare.py
 - Fetching and deduping Play reviews
 - Inbox policy (`churn ≥ 0.70` → `churn_watch`, and so on)
 - Guard routing (`self_harm` → support, not a silent block)
+- Loading at most one agent context after the router
 - Exact-string compare in seedlab (this demo only replaces the *semantic* axis)
 
 ## Data and license
@@ -60,4 +69,4 @@ MIT for the code. Do not commit `.env`.
 
 Play review text belongs to its authors and Google Play. The scrape is a public snapshot for the demo, not a full dump of the store.
 
-Ground-truth fragments in the seed comparator come from the `visual-emphasis` seed in the Bielik seed-definition workshop. Jev does not see the images.
+Ground-truth fragments in the seed comparator come from the `visual-emphasis` seed in a multimodal seed workshop. Jev does not see the images.

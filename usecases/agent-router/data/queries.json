@@ -1,0 +1,42 @@
+[
+  {
+    "text": "pokaż mi ostatnie transkacje klienta",
+    "expected": "transactions"
+  },
+  {
+    "text": "gdzie są wnioski kredytowe?",
+    "expected": "navigation"
+  },
+  {
+    "text": "jaki jest status wniosku kredytowego Kowalskiego",
+    "expected": "lending"
+  },
+  {
+    "text": "zrób przelew 50 zł BLIKIEM na telefon żony",
+    "expected": "payments"
+  },
+  {
+    "text": "nie mogę się zalogować, PIN odrzuca",
+    "expected": "identity"
+  },
+  {
+    "text": "jak wejść w historię karty w aplikacji",
+    "expected": "navigation"
+  },
+  {
+    "text": "co poszło z konta wczoraj",
+    "expected": "transactions"
+  },
+  {
+    "text": "czy Kowalski dostanie kredyt gotówkowy",
+    "expected": "lending"
+  },
+  {
+    "text": "jaka jutro pogoda w Gdańsku",
+    "expected": "none"
+  },
+  {
+    "text": "opowiedz krótki żart o banku",
+    "expected": "none"
+  }
+]

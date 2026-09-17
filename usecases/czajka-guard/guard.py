@@ -1,7 +1,7 @@
-"""Sójka-shaped guardrails on TypeSafe: five Polish safety Nouls + routing.
+"""Czajka: Polish safety screen on TypeSafe Jev.
 
-Taxonomy follows Bielik Guard (Sójka): hate, vulgar, sex, crime, self-harm.
-TypeSafe returns probabilities; this file owns thresholds and actions.
+Five Nouls (hate, vulgar, sex, crime, self-harm) plus a severity Score.
+Code owns thresholds and actions (pass / review / block / support).
 """
 
 from __future__ import annotations
@@ -159,7 +159,7 @@ QUESTIONS = {
 
 
 def screen(text: str) -> dict:
-    state = {"message": text, "language": "pl", "taxonomy": "Bielik Guard / Sójka"}
+    state = {"message": text, "language": "pl", "taxonomy": "Czajka"}
     with TypeSafeClient(api_key=load_api_key()) as client:
         response = client.system_one(state=state, questions=QUESTIONS, model=MODEL)
     answers = response.answers
@@ -210,9 +210,9 @@ def _print_row(result: dict) -> None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Sójka-shaped TypeSafe guard (PL)")
+    parser = argparse.ArgumentParser(description="Czajka TypeSafe guard (PL)")
     parser.add_argument("text", nargs="?", help="Message to screen")
-    parser.add_argument("--demo", action="store_true", help="Screen Sójka-style samples")
+    parser.add_argument("--demo", action="store_true", help="Screen built-in samples")
     parser.add_argument("--policy", choices=POLICIES, default=DEFAULT_POLICY)
     parser.add_argument("--json", action="store_true")
     args = parser.parse_args()
