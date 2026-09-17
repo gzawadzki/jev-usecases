@@ -50,4 +50,22 @@ python usecases/essay-scoring/eval_sample.py --n 1000 --seed 7 --workers 8
 | Within 1 point | 83.1% |
 | Mean pred − gold | **+0.68** |
 
-Competition winners sat around **0.84 QWK**. Jev bunches at 3–4 (600 of 1000 predicted 4) and almost never emits 1, 2, or 6. Adjacent agreement is decent; calibration to the human scale is not. Use the traits as features, not as the leaderboard model.
+Competition winners sat around **0.84 QWK**. Jev bunches at 3–4 (600 of 1000 predicted 4) and almost never emits 1, 2, or 6. Adjacent agreement is decent; calibration to the human scale is not.
+
+### Raising QWK without new Jev calls
+
+Same 1000 raw scores, PetFinder-style cutpoints (AES is ordinal; QWK hates being off by 2). 5-fold CV on this sample:
+
+| Method | QWK |
+| --- | --- |
+| Round + caps (default) | 0.34 |
+| Subtract mean bias, then round | 0.40 |
+| Linear map raw→gold, then round | 0.51 |
+| Logreg on traits | 0.50 |
+| **Tuned cutpoints (5-fold CV)** | **0.57** |
+
+That is most of the cheap lift. It does not get you to 0.84 — that needs a model trained on 17k labels (DeBERTa + trees). Next Jev-side move would be rewriting the Score levels so 3 is the typical student essay, then re-scoring.
+
+```bash
+python usecases/essay-scoring/calibrate.py
+```

@@ -35,3 +35,15 @@ Confusion (rows = gold, columns = pred 1–6):
          5    0    0    1   52    4    0
          6    0    0    0   10    1    0
 ```
+
+## Calibration on the same 1000 (no new Jev calls)
+
+| Method | QWK |
+| --- | --- |
+| Round + caps | 0.3418 |
+| Shift by mean bias | 0.4011 |
+| Linear map, 5-fold CV | 0.5086 |
+| Logreg on traits, 5-fold CV | 0.4999 |
+| Cutpoints, 5-fold CV | **0.5715** |
+
+Cuts on raw (`holistic+1`): 2.04, 3.56, 3.93, 4.21, 5.46. Saved in `data/cuts.json`.
