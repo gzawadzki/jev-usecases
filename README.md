@@ -7,7 +7,7 @@ Five demos of [TypeSafe](https://docs.typesafe.ai/) **Jev**: a model that return
 | [Play review inbox](usecases/play-reviews/) | Topic, bug, churn, feature request → product queue | **2975** reviews in **301.63 s** (8 workers) |
 | [Czajka guard](usecases/czajka-guard/) | Hate, vulgar, sex, crime, self-harm → pass / review / block / support | 7 Polish samples, one request each |
 | [Agent router](usecases/agent-router/) | Which specialist card to load (or none) | 10 bank-chat utterances |
-| [Essay scoring](usecases/essay-scoring/) | AES 2 rubric traits → 1–6 plus teacher inbox | 8 original essays, exact 5/8, within-1 8/8 |
+| [Essay scoring](usecases/essay-scoring/) | AES 2 rubric traits → 1–6 plus teacher inbox | 1000 train essays, QWK **0.34** (winners ~0.84) |
 | [Seed comparator](usecases/seed-comparator/) | Error type of a model answer vs ground truth | 9 cases |
 
 Jev is a hosted System One model: you write the questions. It is not a chatbot and it does not generate replies.

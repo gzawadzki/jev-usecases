@@ -35,3 +35,19 @@ python usecases/essay-scoring/score.py
 Jev ran hot on the mid-high band (a 4 became 5, a 5 became 6). Off-prompt vacation essay correctly capped at 1 (`off_prompt` 0.99). Broken English still read as a claim, so `errors_obscure` 0.19 did not fire the cap — the Noul is “meaning hidden”, not “has mistakes”.
 
 That gap is why AES 2 used QWK and 17k labels, not eight prompts. The useful artifact here is the **trait vector** you can show a teacher or feed a classical model, not a claim that Jev wins the competition.
+
+## Random 1000 from train (`jev-1.13.0`, 100 s, 8 workers)
+
+```bash
+python usecases/essay-scoring/eval_sample.py --n 1000 --seed 7 --workers 8
+```
+
+| | |
+| --- | --- |
+| QWK (capped 1–6) | **0.342** |
+| QWK (raw round only) | 0.332 |
+| Exact | 30.6% |
+| Within 1 point | 83.1% |
+| Mean pred − gold | **+0.68** |
+
+Competition winners sat around **0.84 QWK**. Jev bunches at 3–4 (600 of 1000 predicted 4) and almost never emits 1, 2, or 6. Adjacent agreement is decent; calibration to the human scale is not. Use the traits as features, not as the leaderboard model.

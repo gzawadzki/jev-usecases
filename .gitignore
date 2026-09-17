@@ -11,3 +11,4 @@ __pycache__/
 venv/
 skills-lock.json
 usecases/essay-scoring/data/kaggle/
+usecases/essay-scoring/data/eval_sample.jsonl

@@ -14,3 +14,24 @@ Model `jev-1.13.0`. Eight original essays in `data/essays.json`.
 | errors-obscure | 2 | 3 | 2.83 | 0.85 | 0.78 | 0.03 | 0.19 | revise |
 
 Exact **5/8**. Adjacent (**within 1**) **8/8**.
+
+## Random 1000 train essays (seed 7, 100.3 s)
+
+QWK capped **0.3418**, uncapped 0.3321. Exact 306/1000. Within 1: 831/1000. Mean pred−gold **+0.679**.
+
+|  | 1 | 2 | 3 | 4 | 5 | 6 |
+| --- | --- | --- | --- | --- | --- | --- |
+| gold | 69 | 289 | 367 | 207 | 57 | 11 |
+| pred | 4 | 18 | 362 | 600 | 16 | 0 |
+
+Confusion (rows = gold, columns = pred 1–6):
+
+```
+              1    2    3    4    5    6
+         1    3   12   46    8    0    0
+         2    1    5  182  101    0    0
+         3    0    1  114  249    3    0
+         4    0    0   19  180    8    0
+         5    0    0    1   52    4    0
+         6    0    0    0   10    1    0
+```
