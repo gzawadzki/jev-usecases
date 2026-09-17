@@ -1,0 +1,2 @@
+typesafe-sdk>=0.5.7
+google-play-scraper>=1.2.7

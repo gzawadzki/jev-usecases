@@ -1,0 +1,16 @@
+{
+  "app": "Bank Millennium",
+  "app_id": "wit.android.bcpBankingApp.millenniumPL",
+  "store": "Google Play",
+  "lang": "pl",
+  "country": "pl",
+  "model": "jev-1.13.0",
+  "model_alias": "jev-latest",
+  "n_reviews": 2975,
+  "workers": 8,
+  "classify_wall_seconds": 301.63,
+  "classify_date": "2026-09-18",
+  "fetch_note": "Public scrape with google-play-scraper. NEWEST x stars 1-5, continuation tokens, dedupe by reviewId. Wall time under 15s for this 2975-row pull.",
+  "questions_per_review": 6,
+  "questions": ["topic", "bug", "feature_request", "churn", "needs_reply", "frustration"]
+}
