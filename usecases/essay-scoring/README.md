@@ -6,7 +6,13 @@ Winning stacks were DeBERTa + trees on 17k labeled essays. That is the right too
 
 A classroom product needs the **same scale plus the reasons**. Jev scores the public holistic rubric as a `Score` and four Nouls. Code then caps the integer (off-prompt → 1, no claim → at most 2) and routes `strong` / `revise` / `reteach`.
 
-This demo is **not** a Kaggle submission. Eight short original essays, not the competition train set.
+Public `test.csv` has **three** placeholder essays (code competition; the ~8k hidden test is injected only on Kaggle). Score them and write `data/submission.csv`:
+
+```bash
+python usecases/essay-scoring/submit.py
+```
+
+Jev (`jev-1.13.0`) on that file: `000d118` → 4, `000fe60` → 3, `001ab80` → 4. Kaggle's sample file is 3, 3, 4. A CSV upload is rejected: AES 2 only accepts a notebook, and the rerun typically has no internet, so TypeSafe cannot run on the hidden test from here.
 
 ## Questions in one Jev call
 

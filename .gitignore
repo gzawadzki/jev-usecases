@@ -10,3 +10,4 @@ __pycache__/
 .venv/
 venv/
 skills-lock.json
+usecases/essay-scoring/data/kaggle/
