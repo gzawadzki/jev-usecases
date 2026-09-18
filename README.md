@@ -1,6 +1,6 @@
 # Typed decisions on Polish text with TypeSafe Jev
 
-Six demos of [TypeSafe](https://docs.typesafe.ai/) **Jev**: a model that returns probabilities, not prose. Your code owns routing, thresholds, and side effects.
+Seven demos of [TypeSafe](https://docs.typesafe.ai/) **Jev**: a model that returns probabilities, not prose. Your code owns routing, thresholds, and side effects.
 
 | Use case | What Jev decides | Measured |
 | --- | --- | --- |
@@ -10,6 +10,7 @@ Six demos of [TypeSafe](https://docs.typesafe.ai/) **Jev**: a model that returns
 | [Rozprawka](usecases/rozprawka/) | CKE matura rubric (35 pkt), not AES 1–6 | 3 papers: 31/35, 0, 0 |
 | [Essay scoring](usecases/essay-scoring/) | AES 2 rubric traits → 1–6 plus teacher inbox | 1000 train essays, QWK **0.34** (winners ~0.84) |
 | [Seed comparator](usecases/seed-comparator/) | Error type of a model answer vs ground truth | 9 cases |
+| [RL data triage](usecases/rl-data-triage/) | Keep / downsample / discard / quarantine episode logs | 12 traces: bucket **12/12**, mode **11/12** |
 
 Jev is a hosted System One model: you write the questions. It is not a chatbot and it does not generate replies.
 
@@ -69,6 +70,13 @@ python usecases/essay-scoring/score.py
 python usecases/seed-comparator/compare.py
 ```
 
+**RL data triage** (offline IL / RL filter over symbolic episode logs):
+
+```bash
+python usecases/rl-data-triage/triage.py
+python usecases/rl-data-triage/triage.py --write
+```
+
 ## What stays in code
 
 - Fetching and deduping Play reviews
@@ -78,6 +86,7 @@ python usecases/seed-comparator/compare.py
 - AES integer caps (off-prompt, no thesis)
 - CKE gates: *błąd kardynalny* zeroes the paper; under 300 words drops composition and language
 - Exact-string compare in seedlab (this demo only replaces the *semantic* axis)
+- Offline RL buckets (`quarantine` / `discard` / `downsample` / `keep`) and the IL vs offline split; env reward stays env math
 
 ## Data and license
 
@@ -86,3 +95,5 @@ MIT for the code. Do not commit `.env`.
 Play review text belongs to its authors and Google Play. The scrape is a public snapshot for the demo, not a full dump of the store.
 
 Ground-truth fragments in the seed comparator come from the `visual-emphasis` seed in a multimodal seed workshop. Jev does not see the images.
+
+RL episode logs in `usecases/rl-data-triage/data/episodes.json` are synthetic bank-chat traces. They are not production traffic.
